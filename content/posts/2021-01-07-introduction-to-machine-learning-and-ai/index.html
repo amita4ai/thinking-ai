@@ -47,6 +47,7 @@ head(mtcars, 10)</code></pre>
 <p>The dataset has observations related to 32 car models and there are 11 variables. Let us explore more about dataset—</p>
 <pre class="r"><code>DataExplorer::plot_correlation(mtcars)</code></pre>
 <p><img src="index_files/figure-html/dataexplorer-1.png" width="672" />
+<img src="/2021-01-07-introduction-to-machine-learning-and-ai/index_files/cor.png" alt="Cor Plot" />
 Above figure shows the correlation among the variables. the blue shaded cells have negative correlations and red shaded cells have positive correlation between the corresponding variables. As Mr. Car Designer is concerned with mileage aka miles per gallon of the concept car. He observes that miles per gallon (mpg) is positively related to drat, qsec, vs, am and gear while it is negatively correlated with wt and carb.</p>
 <div id="model-building" class="section level4">
 <h4>Model Building</h4>
