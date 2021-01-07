@@ -1,0 +1,12 @@
+---
+title: Introduction to Machine Learning and AI
+author: Dr. Amita Sharma
+date: '2021-01-07'
+slug: []
+categories:
+  - R
+tags:
+  - plot
+  - R Markdown
+  - regression
+---
