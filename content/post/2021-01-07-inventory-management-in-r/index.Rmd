@@ -1,0 +1,102 @@
+---
+title: Inventory Management In R
+author: Dr. Amita Sharma
+date: '2021-01-07'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+---
+
+### **Introduction**
+
+**Inventory Management** is the ke business domain that needs careful attention. If not taken care of, it can suck margins and start incurring losses in businesses. There are two types of costs in inventory management --- **Holding Cost** of Inventory and **Ordering Cost** of inventory. Following diagram shows the interplay of both types of costs with respect to order size ---
+
+![https://www.accountancyknowledge.com/economic-order-quantity/](C:\\Users\\arunkumar\\Desktop\\EOQ.png)
+
+In inventory optimization, we caculate order quantity on which both types of inventory costs are at minimum level or a the meeting point of these costs. The order quantity at this point is called Economic Order quantity (EOQ).
+
+### **EOQ Model**
+
+Economic Order Quantity Model is the most basic inventory management model. The required parameters for calculating EOQ is d=Demand Per Unit Time, k=Ordering Cost Per Order, h=Holding Cost Per Unit of Product and b=Shortage Penality Cost Per Unit.
+
+### **Case Study**
+
+Let us take an example. A ground nut oil producing company-- Bikana Oils Pvt. Ltd. (BOPL) in Bikaner supplies oil to a bio-chemical industry- Williams Forge Chemicals India Ltd (WFCIL) in Ahemdabad, Gujarat.
+
+BOCL receives per month orders for oil worth 50 Lac Units averagely. Ordering cost per 50 Lac Units is Rs.50000 commission to intermediary and certification authority. Each unit is of a pack of 50000 litres costing Rs.500000. If inventory remains unsold for a month, there is loss of 5% on holding one unit inventory. 
+
+So, parameters of the inventory models are as follows---
+
+- d=Demand Per Unit Time= 50 Lac Units Per Month = 6 Crore Unit Per Year
+- k=Ordering Cost Per Order=Rs.50000 commission
+- h=Holding Cost Per Unit of Product=5% of Rs. 5 Lac
+
+
+```{r EOQ Model}
+
+d=60000000
+p=500000
+k=50000
+h=0.05
+
+EOQ=sqrt((2*d*k)/(p*h))
+
+EOQ
+
+```
+
+So, BOPL should always order 15492 units lot to replenish its stock.
+
+Now, we calculate following other important parameters for inventory management:
+
+```{r other params}
+
+AnnualRequirement=60000000
+
+Number_of_orders=round((AnnualRequirement/EOQ),digits = 0)
+
+paste("Number of Orders Per Annum: ",(Number_of_orders))
+
+TotalOrderingCost=round((Number_of_orders*k),digits = 0)
+
+paste("Total Ordering Cost Per Annum: Rs.", TotalOrderingCost)
+
+TotalCarryingCost=round((h*p*EOQ/2),digits =0)
+
+paste("Total Carrying Cost Per Annum: Rs.",TotalCarryingCost)
+
+TotalInventoryCost=TotalOrderingCost+TotalCarryingCost
+
+paste("Total Inventory Cost: Rs.", TotalInventoryCost)
+
+```
+
+If BOPL used to order in the lot of 10000, than what is the saving on inventory cost using EOQ?
+
+```{r Old order cost}
+
+OldOrderSize=10000
+
+TotalOrderingCost_Old=k*OldOrderSize
+
+paste("Total Ordering Cost before EOQ: Rs.",TotalOrderingCost_Old)
+
+TotalCarryingCost_Old=h*p*EOQ/2
+
+paste("Total Carrying Cost before EOQ: Rs.",TotalCarryingCost_Old)
+
+TotalInventoryCost_Old=TotalOrderingCost_Old+TotalCarryingCost_Old
+
+paste("Total Inventory Cost Per Annum before EOQ: Rs.", TotalInventoryCost_Old)
+
+ProfitOrLossfromEOQ=round((TotalInventoryCost_Old - TotalInventoryCost),digit=0)
+
+paste("Cost Saving from EOQ Model: Rs.", ProfitOrLossfromEOQ)
+
+```
+
+### **CONCLUSION**
+
+So, EOQ Model helps to save Rs. 30.635 Crore for BOPL. This is a huge saving. We can see how we can use simple arithmatic calculation in R to find EOQ for optimal inventory management.
