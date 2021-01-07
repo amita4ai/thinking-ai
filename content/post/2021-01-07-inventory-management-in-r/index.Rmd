@@ -13,13 +13,13 @@ tags:
 
 **Inventory Management** is the ke business domain that needs careful attention. If not taken care of, it can suck margins and start incurring losses in businesses. There are two types of costs in inventory management --- **Holding Cost** of Inventory and **Ordering Cost** of inventory. Following diagram shows the interplay of both types of costs with respect to order size ---
 
-![https://www.accountancyknowledge.com/economic-order-quantity/](C:\\Users\\arunkumar\\Desktop\\EOQ.png)
+![https://www.accountancyknowledge.com/economic-order-quantity/](/2021-01-07-inventory-management-in-r/index_files/EOQ.png){width=300px}
 
-In inventory optimization, we caculate order quantity on which both types of inventory costs are at minimum level or a the meeting point of these costs. The order quantity at this point is called Economic Order quantity (EOQ).
+In inventory optimization, we calculate order quantity on which both types of inventory costs are at minimum level or a the meeting point of these costs. The order quantity at this point is called Economic Order quantity (EOQ).
 
 ### **EOQ Model**
 
-Economic Order Quantity Model is the most basic inventory management model. The required parameters for calculating EOQ is d=Demand Per Unit Time, k=Ordering Cost Per Order, h=Holding Cost Per Unit of Product and b=Shortage Penality Cost Per Unit.
+Economic Order Quantity Model is the most basic inventory management model. The required parameters for calculating EOQ is d=Demand Per Unit Time, k=Ordering Cost Per Order and h=Holding Cost Per Unit of Product.
 
 ### **Case Study**
 
