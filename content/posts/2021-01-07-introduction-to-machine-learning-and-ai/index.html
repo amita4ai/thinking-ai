@@ -1,0 +1,119 @@
+---
+title: "Introduction to Machine Learning and AI"
+author: "Dr. Amita Sharma"
+date: '2021-01-07'
+slug: []
+categories: R
+tags:
+- plot
+- R Markdown
+- regression
+---
+
+
+
+<p><strong>Machine Learning &amp; AI</strong> are the new buzzwords we will keep hearing as they are becoming critical part of every sphere of life, business and society. Why these terms have become so important these days because of three major factors — huge amount of data generation at very rapid speed, deepening data storage capacity and increasing data processing speed. With onset of 5G, it is going to flareup more and more.</p>
+<p>In the term “Machine Learning”, Machine means computer. How machine learning happens is just like we understand the world but with different tools and techniques. We consume loads of information and through this, we build our decision making framework based on intution, experience, urgency, opinions, etc. and select optimal alternative among the set of alternatives.</p>
+<p>In machine learning, machine also consumes loads and loads of information, processes it with a defined framework made up of statistics, mathematical modeling and inter-relatedness between inputs and outputs. Thus, machine produces the optimal alternatives based on set of benchmarks.</p>
+<div class="figure">
+<img src="/2021-01-07-introduction-to-machine-learning-and-ai/index_files/humanVSmachine.jpg" alt="" />
+<p class="caption">Human Vs Machine</p>
+</div>
+<p><strong>Artificial Intelligence aka AI</strong> is the collection of tools and techniques to mimic human behavior. Everybody knows <strong>ALEXA</strong>. Alexa takes voice commands and plays accordingly. Most of the AI applications are built on Neural Networks.</p>
+<div id="understanding-machine-learning-with-case-study-of-mr.-car-designer" class="section level3">
+<h3>Understanding Machine Learning with Case Study of Mr. Car Designer</h3>
+<p>Mr. Car Designer specializes in designing car engine setup and bodywork. He has data of many car models that contain info related to miles per gallon, number of gears, type of transmission, engine type etc. He wants to estimate mileage of his concept car before actual prototype development so that he can convince company to invest a pre payment for his concept.</p>
+<p>He has following data set—</p>
+<pre class="r"><code>data(&quot;mtcars&quot;)
+
+head(mtcars, 10)</code></pre>
+<pre><code>##                    mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+## Duster 360        14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+## Merc 240D         24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+## Merc 230          22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+## Merc 280          19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</code></pre>
+<p>Number of observations and variables in the dataset is as following—</p>
+<pre class="r"><code>dim(mtcars)</code></pre>
+<pre><code>## [1] 32 11</code></pre>
+<pre class="r"><code>colnames(mtcars)</code></pre>
+<pre><code>##  [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;   &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot;
+## [11] &quot;carb&quot;</code></pre>
+<p>The dataset has observations related to 32 car models and there are 11 variables. Let us explore more about dataset—</p>
+<pre class="r"><code>DataExplorer::plot_correlation(mtcars)</code></pre>
+<p><img src="index_files/figure-html/dataexplorer-1.png" width="672" />
+Above figure shows the correlation among the variables. the blue shaded cells have negative correlations and red shaded cells have positive correlation between the corresponding variables. As Mr. Car Designer is concerned with mileage aka miles per gallon of the concept car. He observes that miles per gallon (mpg) is positively related to drat, qsec, vs, am and gear while it is negatively correlated with wt and carb.</p>
+<div id="model-building" class="section level4">
+<h4>Model Building</h4>
+<p>Now, this information can be used to build a mathematical/statistical model that can predict the mpg of a concept car based on given values of variables.</p>
+<p>To build model, we need to divide data into train and test sets. train set will consist of 80% observations of original dataset and rest 20% observations will be used for testing the prediction capability of the model.</p>
+<pre class="r"><code>set.seed(1234)
+
+s=sample(1:nrow(mtcars), replace = TRUE, 0.8*nrow(mtcars))
+
+train=mtcars[s,]
+
+test=mtcars[-s,]
+
+dim(train)</code></pre>
+<pre><code>## [1] 25 11</code></pre>
+<pre class="r"><code>dim(test)</code></pre>
+<pre><code>## [1] 16 11</code></pre>
+<p>Now, we will build Linear Regression model—</p>
+<pre class="r"><code>model=lm(mpg~.,data=train)
+
+summary(model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ ., data = train)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.2732 -0.6084 -0.1825  0.4189  2.4598 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept) -105.52824   38.02038  -2.776  0.01488 * 
+## cyl            7.54817    2.69303   2.803  0.01410 * 
+## disp           0.01571    0.01054   1.491  0.15807   
+## hp            -0.01093    0.02952  -0.370  0.71669   
+## drat           6.67428    2.38285   2.801  0.01415 * 
+## wt            -4.08017    1.48972  -2.739  0.01599 * 
+## qsec           1.99249    0.70981   2.807  0.01398 * 
+## vs            11.17275    4.51353   2.475  0.02671 * 
+## am             7.05615    2.71178   2.602  0.02089 * 
+## gear           7.37043    2.30509   3.197  0.00645 **
+## carb          -1.31572    0.83361  -1.578  0.13681   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.251 on 14 degrees of freedom
+## Multiple R-squared:  0.9764, Adjusted R-squared:  0.9596 
+## F-statistic:    58 on 10 and 14 DF,  p-value: 1.227e-09</code></pre>
+<p>The model has reasonably good R squared value i.e. 0.9764. We can use this model for predicting the mpg for test dataset.</p>
+<pre class="r"><code>pred=predict(model, newdata=test[,-1])
+
+pred=data.frame(pred)
+
+head(pred)</code></pre>
+<pre><code>##                pred
+## Mazda RX4  20.48336
+## Datsun 710 25.04993
+## Merc 240D  15.77691
+## Merc 280   25.03121
+## Merc 280C  26.22670
+## Merc 450SL 15.72594</code></pre>
+<p>To evaluate model predictions, we can calculate Mean Percentage Error—</p>
+<pre class="r"><code>library(Metrics)
+
+mape(test$mpg,pred$pred)</code></pre>
+<pre><code>## [1] 0.3311992</code></pre>
+<p>Now, Mr. Car Designer can feed his on set of readings of variables and guesstimate the mpg of the concept car before producing any physical prototype.</p>
+<p>This how machine learning can save huge costs, resources and time. Machine Learning is going to serve the society, businesses and individuals and it will profuse more rapidly and deeply.</p>
+</div>
+</div>
