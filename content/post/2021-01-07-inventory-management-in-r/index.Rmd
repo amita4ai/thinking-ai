@@ -11,7 +11,7 @@ tags:
 
 ### **Introduction**
 
-**Inventory Management** is the ke business domain that needs careful attention. If not taken care of, it can suck margins and start incurring losses in businesses. There are two types of costs in inventory management --- **Holding Cost** of Inventory and **Ordering Cost** of inventory. Following diagram shows the interplay of both types of costs with respect to order size ---
+**Inventory Management** is the key business domain that needs careful attention. If not taken care of, it can suck margins and start incurring losses in business. There are two types of costs in inventory management --- **Holding Cost** and **Ordering Cost** of inventory. Following diagram shows the interplay of both types of costs with respect to order size ---
 
 ![https://www.accountancyknowledge.com/economic-order-quantity/](/2021-01-07-inventory-management-in-r/index_files/EOQ.png){width=300px}
 
@@ -19,17 +19,17 @@ In inventory optimization, we calculate order quantity on which both types of in
 
 ### **EOQ Model**
 
-Economic Order Quantity Model is the most basic inventory management model. The required parameters for calculating EOQ is d=Demand Per Unit Time, k=Ordering Cost Per Order and h=Holding Cost Per Unit of Product.
+Economic Order Quantity Model is the most basic inventory management model. The required parameters for calculating EOQ is d=Demand Per Unit Time, k=Ordering Cost Per Order, p=cost of a unit and h=Holding Cost Per Unit of Product.
 
 ### **Case Study**
 
 Let us take an example. A ground nut oil producing company-- Bikana Oils Pvt. Ltd. (BOPL) in Bikaner supplies oil to a bio-chemical industry- Williams Forge Chemicals India Ltd (WFCIL) in Ahemdabad, Gujarat.
 
-BOCL receives per month orders for oil worth 50 Lac Units averagely. Ordering cost per 50 Lac Units is Rs.50000 commission to intermediary and certification authority. Each unit is of a pack of 50000 litres costing Rs.500000. If inventory remains unsold for a month, there is loss of 5% on holding one unit inventory. 
+BOPL receives per month orders for oil worth 50 Lac Units averagely. Ordering cost per 50 Lac Units is Rs.50000 commission to intermediary and certification authority. Each unit is of a pack of 50000 litres costing Rs.500000. If inventory remains unsold for a month, there is loss of 5% on holding one unit inventory. BOPL used to order its inventory in the lot of 10000 units.
 
 So, parameters of the inventory models are as follows---
 
-- d=Demand Per Unit Time= 50 Lac Units Per Month = 6 Crore Unit Per Year
+- d=Demand Per Unit Time= 50 Lac Units Per Month X 12 = 6 Crore Unit Per Year
 - k=Ordering Cost Per Order=Rs.50000 commission
 - h=Holding Cost Per Unit of Product=5% of Rs. 5 Lac
 
@@ -73,7 +73,7 @@ paste("Total Inventory Cost: Rs.", TotalInventoryCost)
 
 ```
 
-If BOPL used to order in the lot of 10000, than what is the saving on inventory cost using EOQ?
+Let us evaluate what is the saving on inventory cost using EOQ?
 
 ```{r Old order cost}
 
@@ -99,4 +99,4 @@ paste("Cost Saving from EOQ Model: Rs.", ProfitOrLossfromEOQ)
 
 ### **CONCLUSION**
 
-So, EOQ Model helps to save Rs. 30.635 Crore for BOPL. This is a huge saving. We can see how we can use simple arithmatic calculation in R to find EOQ for optimal inventory management.
+So, EOQ Model helps to save Rs. 30.635 Crore for BOPL. This is a huge saving. We can see how we can use simple arithmetic calculation in R to find EOQ for optimal inventory management.

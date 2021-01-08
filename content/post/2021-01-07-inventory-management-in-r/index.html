@@ -13,7 +13,7 @@ tags:
 
 <div id="introduction" class="section level3">
 <h3><strong>Introduction</strong></h3>
-<p><strong>Inventory Management</strong> is the ke business domain that needs careful attention. If not taken care of, it can suck margins and start incurring losses in businesses. There are two types of costs in inventory management — <strong>Holding Cost</strong> of Inventory and <strong>Ordering Cost</strong> of inventory. Following diagram shows the interplay of both types of costs with respect to order size —</p>
+<p><strong>Inventory Management</strong> is the key business domain that needs careful attention. If not taken care of, it can suck margins and start incurring losses in business. There are two types of costs in inventory management — <strong>Holding Cost</strong> and <strong>Ordering Cost</strong> of inventory. Following diagram shows the interplay of both types of costs with respect to order size —</p>
 <div class="figure">
 <img src="/2021-01-07-inventory-management-in-r/index_files/EOQ.png" width="300" alt="" />
 <p class="caption"><a href="https://www.accountancyknowledge.com/economic-order-quantity/" class="uri">https://www.accountancyknowledge.com/economic-order-quantity/</a></p>
@@ -22,15 +22,15 @@ tags:
 </div>
 <div id="eoq-model" class="section level3">
 <h3><strong>EOQ Model</strong></h3>
-<p>Economic Order Quantity Model is the most basic inventory management model. The required parameters for calculating EOQ is d=Demand Per Unit Time, k=Ordering Cost Per Order and h=Holding Cost Per Unit of Product.</p>
+<p>Economic Order Quantity Model is the most basic inventory management model. The required parameters for calculating EOQ is d=Demand Per Unit Time, k=Ordering Cost Per Order, p=cost of a unit and h=Holding Cost Per Unit of Product.</p>
 </div>
 <div id="case-study" class="section level3">
 <h3><strong>Case Study</strong></h3>
 <p>Let us take an example. A ground nut oil producing company– Bikana Oils Pvt. Ltd. (BOPL) in Bikaner supplies oil to a bio-chemical industry- Williams Forge Chemicals India Ltd (WFCIL) in Ahemdabad, Gujarat.</p>
-<p>BOCL receives per month orders for oil worth 50 Lac Units averagely. Ordering cost per 50 Lac Units is Rs.50000 commission to intermediary and certification authority. Each unit is of a pack of 50000 litres costing Rs.500000. If inventory remains unsold for a month, there is loss of 5% on holding one unit inventory.</p>
+<p>BOPL receives per month orders for oil worth 50 Lac Units averagely. Ordering cost per 50 Lac Units is Rs.50000 commission to intermediary and certification authority. Each unit is of a pack of 50000 litres costing Rs.500000. If inventory remains unsold for a month, there is loss of 5% on holding one unit inventory. BOPL used to order its inventory in the lot of 10000 units.</p>
 <p>So, parameters of the inventory models are as follows—</p>
 <ul>
-<li>d=Demand Per Unit Time= 50 Lac Units Per Month = 6 Crore Unit Per Year</li>
+<li>d=Demand Per Unit Time= 50 Lac Units Per Month X 12 = 6 Crore Unit Per Year</li>
 <li>k=Ordering Cost Per Order=Rs.50000 commission</li>
 <li>h=Holding Cost Per Unit of Product=5% of Rs. 5 Lac</li>
 </ul>
@@ -63,7 +63,7 @@ paste(&quot;Total Carrying Cost Per Annum: Rs.&quot;,TotalCarryingCost)</code></
 
 paste(&quot;Total Inventory Cost: Rs.&quot;, TotalInventoryCost)</code></pre>
 <pre><code>## [1] &quot;Total Inventory Cost: Rs. 387299167&quot;</code></pre>
-<p>If BOPL used to order in the lot of 10000, than what is the saving on inventory cost using EOQ?</p>
+<p>Let us evaluate what is the saving on inventory cost using EOQ?</p>
 <pre class="r"><code>OldOrderSize=10000
 
 TotalOrderingCost_Old=k*OldOrderSize
@@ -85,5 +85,5 @@ paste(&quot;Cost Saving from EOQ Model: Rs.&quot;, ProfitOrLossfromEOQ)</code></
 </div>
 <div id="conclusion" class="section level3">
 <h3><strong>CONCLUSION</strong></h3>
-<p>So, EOQ Model helps to save Rs. 30.635 Crore for BOPL. This is a huge saving. We can see how we can use simple arithmatic calculation in R to find EOQ for optimal inventory management.</p>
+<p>So, EOQ Model helps to save Rs. 30.635 Crore for BOPL. This is a huge saving. We can see how we can use simple arithmetic calculation in R to find EOQ for optimal inventory management.</p>
 </div>
