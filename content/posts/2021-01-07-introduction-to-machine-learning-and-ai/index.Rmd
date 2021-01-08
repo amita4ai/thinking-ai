@@ -17,9 +17,7 @@ In the term "Machine Learning", Machine means computer. How machine learning hap
 
 In machine learning, machine also consumes loads and loads of information, processes it with a defined framework made up of statistics, mathematical modeling and inter-relatedness between inputs  and outputs. Thus, machine produces the optimal alternatives based on set of benchmarks.
 
-
-![Human Vs Machine](/2021-01-07-introduction-to-machine-learning-and-ai/index_files/humanVSmachine.jpg)
-
+![Human VS Machine](/2021-01-07-introduction-to-machine-learning-and-ai/index_files/hVsm.jpg){width=300px height=175px}
 
 **Artificial Intelligence aka AI** is the collection of tools and techniques to mimic human behavior. Everybody knows **ALEXA**. Alexa takes voice commands and plays accordingly. Most of the AI applications are built on Neural Networks. 
 
@@ -55,12 +53,8 @@ The dataset has observations related to 32 car models and there are 11 variables
 DataExplorer::plot_correlation(mtcars)
 
 ```
+![Cor Plot](/2021-01-07-introduction-to-machine-learning-and-ai/index_files/cor.png){width=150px height=120px}
 
-```{r, out.width = "50%", fig.pos="h"}
-
-knitr::include_graphics("C:\\Users\\arunkumar\\Desktop\\AS\\cor.png")
-
-```
 Above figure shows the correlation among the variables. the blue shaded cells have negative correlations and red shaded cells have positive correlation between the corresponding variables. As Mr. Car Designer is concerned with mileage aka miles per gallon of the concept car. He observes that miles per gallon (mpg) is positively related to drat, qsec, vs, am and gear while it is negatively correlated with wt and carb.
 
 #### Model Building
