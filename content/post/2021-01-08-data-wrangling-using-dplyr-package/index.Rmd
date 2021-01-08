@@ -1,0 +1,86 @@
+---
+title: 'Data Wrangling: using "dplyr" package'
+author: Dr. Amita Sharma
+date: '2021-01-08'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+---
+
+## Introduction
+
+**Data Wrangling** is an important step of any machine learning project. No data is prepared for machine learning projects. Raw data needs to be manipulated or reshaped so that machine learning algorithm can use the data. 
+
+**"_dplyr_"** package is very handy package for data wrangling. In this blog post we will understand some of the important data wrangling features of this package.
+
+## Data Overview
+
+There are _dplyr_ commands that can give bird's eye view of the dataset. We are going to use _Iris_ dataset to experiment with commands of _dplyr_ package.
+
+### _dplyr::tbl_df()_
+
+_tbl_df()_ gives a snapshot of the dataset.
+
+```{r}
+
+dplyr::tbl_df(iris)
+
+```
+
+### _dplyr::glimpse()_
+
+_dplyr::glimpse()_ produces the overview with data structure of the dataset.
+
+```{r}
+
+dplyr::glimpse(iris)
+
+```
+
+### _dplyr::View()_
+
+_dplyr::View()_ shows the table view of the dataset in a separate tab.
+
+## Data Summary
+
+Data Summary functions of _dplyr_ produces set of summaries that gives important statistics of the data. 
+
+### _dplyr::summarise()_
+
+_dplyr::summarise_, _dplyr::summarise_each_ and _dplyr::count_ are the commands to see through the data with important statistics.
+
+```{r}
+
+dplyr::summarise_all(iris[,1:4], .funs = mean)
+
+```
+
+## Grouping Data
+
+By grouping data, we can learn the data partitions on factors and learn group-wise statistics.
+
+### _dplyr::group_by()_
+
+```{r}
+
+dplyr::group_by(iris,Species)
+
+```
+
+With pipeline operator, we can dive more into the data:
+
+```{r}
+
+library(dplyr)
+
+iris %>% group_by(Species) summarise_all(.funs = sd)
+
+```
+
+There are many more exciting functions in _dplyr_ package, you can explore more functions with pdf cheatsheet on following link:
+
+https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+
+
