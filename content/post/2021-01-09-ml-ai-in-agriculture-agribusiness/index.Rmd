@@ -13,9 +13,9 @@ tags:
 
 Agriculture sector in India contributes around 15% in GDP and employs around 50% of Indian population. The agriculture sector is plagued with many inefficiencies and bottlenecks.
 
-Though India stands second worldwide in farm outputs (2018), the productivity in agriculture sector is among the lowest in the world. India being one the largest producers of most of the agricultural crops (both food grains and non- food grain) but ranks are very low in terms of productivity. 
+Though India stands second worldwide in farm outputs (2018), the productivity in agriculture sector is among the lowest in the world. India being one of the largest producers of most of the agricultural crops (both food grains and non- food grain) but ranks are very low in terms of productivity. 
 
-India is the second largest producer of rice and wheat in the world, but in terms of productivity the ranks are and 38 respectively. India is the largest producer of pulses, but it is only 138 in the world. Thus after the tremendous effect of Green Revolution, productivity (yield per hectare) has not improved much.
+India is the second largest producer of rice and wheat in the world, but in terms of productivity the ranks are 35 and 38 respectively. India is the largest producer of pulses, but it ranks 138th in the world. Thus after the tremendous effect of Green Revolution, productivity (yield per hectare) has not improved much.
 
 ## Bottlenecks in Indian Agriculture
 
@@ -28,7 +28,7 @@ As per Article shared by Tushar Seth on "Productivity Level of Indian Agricultur
 - Irregular and Poor Credit & Marketing Facilities
 - Lack of Irrigation Facilities
 
-## Stages in AGriculture
+## Stages in Agriculture
 
 To resolve problems of agriculture sector, we must know the critical stages in agriculture. Following stages of agriculture can be considered:
 
@@ -47,11 +47,11 @@ Keeping in mind these important stages of agriculture, Machine Learning and Arti
 
 ### Weather Forecasting
 
-Seed sowing, irrigation etc. need a optimized schedule to improve farm productivity. Seed sowing time is very dicey decision and most of the later stages depend heavily on this decision. ML & AI apps can help in this decision with very high accuracy. Over the period of time the accuracy of the apps will improve due to real data inputs. 
+Seed sowing, irrigation, etc. need an optimized schedule to improve farm productivity. Seed sowing time is very dicey decision and most of the later stages depend heavily on this decision. ML & AI apps can help in this decision with very high accuracy. Over the period of time the accuracy of the apps will improve due to real data inputs. 
 
 ### AI Based Pest Detection
 
-AI & ML apps can detect the pests much earlier than man can do. IoT (Internet of Things) kits need to be installed in the farms and hourly data capture by IoT kits can feed data into ML & AI apps to identify the types of pests, density of intrusion, etc. can be calculated with much more precision. It can recommend the required amount of pesticide doses spread based on pests density in the farm so the spending on pesticide can be optimized. 
+AI & ML apps can detect the pests much earlier than man can do. IoT (Internet of Things) kits need to be installed in the farms and hourly data capture by IoT kits can feed data into ML & AI apps to identify the types of pests, density of intrusion, etc. These pests related elements can be calculated with much more precision. It can recommend the required amount of pesticide doses based on pests density in the farm so that spending on pesticide can be optimized. 
 
 ###  Soil & Crop Health Management & Analytics
 
@@ -61,9 +61,9 @@ Pre-calculation of such important elements of farm can save big proportion on in
 
 ### Improving Harvest Quality
 
-AI and ML applications are core part of Precision Agriculture where in thousands of data points of the farm ground are gathered through IoT and Aerial Devices. Such huge data can be fed to ML and AI apps to give razor-sharp decision prescription. This can optimize the harvest quality much more significantly than that of a manual practice.
+AI and ML applications are core part of Precision Agriculture where thousands of data points of the farm ground are gathered through IoT and Aerial Devices. Such huge data can be fed to ML and AI apps to give razor-sharp decision prescription. This can optimize the harvest quality much more significantly than that of the manual practices.
 
-There can be many more applications, we just discussed some popular ones. There is lot of scope of research in developing AI and ML applications based on different agri-climatic regions, crop type, ecosystem and climate change.
+There can be many more applications, we just discussed some popular ones. There is lot of scope of research in developing AI and ML applications based on different agri-climatic regions, crop type, ecosystem, climate change, etc.
 
 ## Bottlenecks in Implementing AI & ML in Agriculture
 
@@ -73,4 +73,4 @@ There is lack of AI & ML facilities and far from the reach of farmers in hinterl
 
 ## CONCLUSION
 
-Agriculture sector is the major employer in our country. Increasing farm level income means increasing income of 50% of population in India. AI and ML applications based startups should be encouraged and well funded to accelerate the progress in agriculture sector. 
+Agriculture sector is the major employer in our country. Increasing farm level income means increasing income of 50% of population in India. AI and ML applications based startups should be encouraged and well funded to accelerate the progress in agriculture sector of India. 
