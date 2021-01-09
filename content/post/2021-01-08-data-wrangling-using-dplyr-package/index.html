@@ -1,0 +1,116 @@
+---
+title: 'Data Wrangling: using "dplyr" package'
+author: Dr. Amita Sharma
+date: '2021-01-08'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+---
+
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p><strong>Data Wrangling</strong> is an important step of any machine learning project. No data is prepared for machine learning projects. Raw data needs to be manipulated or reshaped so that machine learning algorithm can use the data.</p>
+<p><strong>“<em>dplyr</em>”</strong> package is very handy package for data wrangling. In this blog post we will understand some of the important data wrangling features of this package.</p>
+</div>
+<div id="data-overview" class="section level2">
+<h2>Data Overview</h2>
+<p>There are <em>dplyr</em> commands that can give bird’s eye view of the dataset. We are going to use <em>Iris</em> dataset to experiment with commands of <em>dplyr</em> package.</p>
+<div id="dplyrtbl_df" class="section level3">
+<h3><em>dplyr::tbl_df()</em></h3>
+<p><em>tbl_df()</em> gives a snapshot of the dataset.</p>
+<pre class="r"><code>library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>dplyr::tbl_df(iris)</code></pre>
+<pre><code>## Warning: `tbl_df()` is deprecated as of dplyr 1.0.0.
+## Please use `tibble::as_tibble()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
+<pre><code>## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 140 more rows</code></pre>
+</div>
+<div id="dplyrglimpse" class="section level3">
+<h3><em>dplyr::glimpse()</em></h3>
+<p><em>dplyr::glimpse()</em> produces the overview with data structure of the dataset.</p>
+<pre class="r"><code>dplyr::glimpse(iris)</code></pre>
+<pre><code>## Rows: 150
+## Columns: 5
+## $ Sepal.Length &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4,...
+## $ Sepal.Width  &lt;dbl&gt; 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7,...
+## $ Petal.Length &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.5,...
+## $ Petal.Width  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2,...
+## $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setosa...</code></pre>
+</div>
+<div id="dplyrview" class="section level3">
+<h3><em>dplyr::View()</em></h3>
+<p><em>dplyr::View()</em> shows the table view of the dataset in a separate tab.</p>
+</div>
+</div>
+<div id="data-summary" class="section level2">
+<h2>Data Summary</h2>
+<p>Data Summary functions of <em>dplyr</em> produces set of summaries that gives important statistics of the data.</p>
+<div id="dplyrsummarise" class="section level3">
+<h3><em>dplyr::summarise()</em></h3>
+<p><em>dplyr::summarise</em>, <em>dplyr::summarise_each</em> and <em>dplyr::count</em> are the commands to see through the data with important statistics.</p>
+<pre class="r"><code>dplyr::summarise_all(iris[,1:4], .funs = mean)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width
+## 1     5.843333    3.057333        3.758    1.199333</code></pre>
+</div>
+</div>
+<div id="grouping-data" class="section level2">
+<h2>Grouping Data</h2>
+<p>By grouping data, we can learn the data partitions on factors and learn group-wise statistics.</p>
+<div id="dplyrgroup_by" class="section level3">
+<h3><em>dplyr::group_by()</em></h3>
+<pre class="r"><code>dplyr::group_by(iris,Species)</code></pre>
+<pre><code>## # A tibble: 150 x 5
+## # Groups:   Species [3]
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 140 more rows</code></pre>
+<p>With pipeline operator, we can dive more into the data:</p>
+<pre class="r"><code>library(dplyr)
+
+iris %&gt;% group_by(Species) %&gt;% summarise_all(.funs = sd)</code></pre>
+<pre><code>## # A tibble: 3 x 5
+##   Species    Sepal.Length Sepal.Width Petal.Length Petal.Width
+##   &lt;fct&gt;             &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+## 1 setosa            0.352       0.379        0.174       0.105
+## 2 versicolor        0.516       0.314        0.470       0.198
+## 3 virginica         0.636       0.322        0.552       0.275</code></pre>
+<p>There are many more exciting functions in <em>dplyr</em> package, you can explore more functions with pdf cheatsheet on following link:</p>
+<p><a href="https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf" class="uri">https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf</a></p>
+</div>
+</div>

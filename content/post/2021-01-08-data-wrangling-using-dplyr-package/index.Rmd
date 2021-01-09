@@ -25,6 +25,8 @@ _tbl_df()_ gives a snapshot of the dataset.
 
 ```{r}
 
+library(dplyr)
+
 dplyr::tbl_df(iris)
 
 ```
@@ -75,12 +77,10 @@ With pipeline operator, we can dive more into the data:
 
 library(dplyr)
 
-iris %>% group_by(Species) summarise_all(.funs = sd)
+iris %>% group_by(Species) %>% summarise_all(.funs = sd)
 
 ```
 
 There are many more exciting functions in _dplyr_ package, you can explore more functions with pdf cheatsheet on following link:
 
 https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
-
-
